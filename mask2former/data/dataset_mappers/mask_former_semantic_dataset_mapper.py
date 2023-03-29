@@ -84,7 +84,11 @@ class MaskFormerSemanticDatasetMapper:
         # Assume always applies to the training set.
         dataset_names = cfg.DATASETS.TRAIN
         meta = MetadataCatalog.get(dataset_names[0])
-        ignore_label = meta.ignore_label
+        try:
+            ignore_label = meta.ignore_label
+        except:
+            print("no meta.ignore_label, so we ignore label 255 instead")
+            ignore_label = 255
 
         ret = {
             "is_train": is_train,
