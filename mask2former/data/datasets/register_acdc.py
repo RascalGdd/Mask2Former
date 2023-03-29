@@ -6,6 +6,7 @@ import torch
 import copy
 import detectron2.data.transforms as T
 from detectron2.data import DatasetMapper   # the default mapper
+from detectron2.data import MetadataCatalog
 
 def acdc_train_function():
     dataset_path = r"./datasets/acdc"
@@ -38,6 +39,7 @@ def acdc_val_function():
 
 DatasetCatalog.register("acdc_train", acdc_train_function)
 DatasetCatalog.register("acdc_val", acdc_val_function)
+MetadataCatalog.get("acdc_val").gt_dir = "datasets/acdc/labels/val"
 # data = DatasetCatalog.get("acdc_train")
 
 
