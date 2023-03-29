@@ -13,9 +13,9 @@ def acdc_train_function():
     img_path = os.path.join(dataset_path, "images", "train")
     lbl_path = os.path.join(dataset_path, "labels", "train")
     for img in os.listdir(img_path):
-        file_name = img
+        file_name = os.path.join(img_path, img)
         image_id = img
-        width, height = Image.open(os.path.join(img_path, img)).size
+        width, height = Image.open(file_name).size
         sem_seg_file_name = os.path.join(lbl_path, img)
         res.append({"file_name": file_name, "image_id": image_id, "width": width, "height": height, "sem_seg_file_name": sem_seg_file_name})
 
@@ -27,9 +27,9 @@ def acdc_val_function():
     img_path = os.path.join(dataset_path, "images", "val")
     lbl_path = os.path.join(dataset_path, "labels", "val")
     for img in os.listdir(img_path):
-        file_name = img
+        file_name = os.path.join(img_path, img)
         image_id = img
-        width, height = Image.open(os.path.join(img_path, img)).size
+        width, height = Image.open(file_name).size
         sem_seg_file_name = os.path.join(lbl_path, img)
         res.append({"file_name": file_name, "image_id": image_id, "width": width, "height": height, "sem_seg_file_name": sem_seg_file_name})
 
