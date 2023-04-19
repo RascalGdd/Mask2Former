@@ -19,6 +19,7 @@ import os
 
 from collections import OrderedDict
 from typing import Any, Dict, List, Set
+from mask2former.data.cis import register_dataset
 
 import torch
 
@@ -298,6 +299,7 @@ def setup(args):
 
 
 def main(args):
+    register_dataset()
     cfg = setup(args)
 
     if args.eval_only:
